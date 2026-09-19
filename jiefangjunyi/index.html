@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="解放军艺术学院研究生招生、培养、专业设置及学术成果展示平台。涵盖音乐、舞蹈、美术、戏剧影视文学等艺术专业研究生教育信息。">
+    <meta name="keywords" content="解放军艺术学院,军艺,研究生,招生,艺术教育,音乐,舞蹈,美术,戏剧">
+    <title>解放军艺术学院研究生-军艺研究生招生与培养信息平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #8B1E1E; /* 军旅红 */
+            --secondary-color: #1a1a1a;
+            --accent-color: #c0392b;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --text-light: #666;
+            --white: #ffffff;
+            --border-color: #e0e0e0;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .cta-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a1a 0%, #4a1c1c 100%);
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 30px;
+        }
+
+        .stat-item h3 {
+            font-size: 32px;
+            color: #e74c3c;
+        }
+
+        .stat-item p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Container */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Section Titles */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 32px;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Research Areas */
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .area-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .area-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .area-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .area-card h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .area-card p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        /* Admission Info */
+        .admission-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+        }
+
+        .info-sidebar {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            height: fit-content;
+        }
+
+        .info-sidebar h3 {
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--bg-color);
+        }
+
+        .info-list li {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .info-list li::before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .info-content {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .info-block {
+            margin-bottom: 30px;
+        }
+
+        .info-block h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .info-block ul {
+            padding-left: 20px;
+        }
+
+        .info-block li {
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        /* News & Updates */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .news-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .news-date {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 5px 10px;
+            font-size: 12px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .news-content {
+            padding: 20px;
+        }
+
+        .news-content h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .news-content h4 a:hover {
+            color: var(--primary-color);
+        }
+
+        .news-content p {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* FAQ */
+        .faq-section {
+            background-color: var(--white);
+            padding: 60px 20px;
+            margin-top: 60px;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .faq-question {
+            padding: 20px 0;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: "+";
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .faq-answer {
+            padding-bottom: 20px;
+            color: var(--text-light);
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: "-";
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #ccc;
+            padding: 60px 20px 20px;
+        }
+
+        .footer-grid {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+            }
+            
+            nav ul {
+                margin: 15px 0;
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .admission-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                </svg>
+                <div>解放军艺术学院<span>研究生</span></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">招生简章</a></li>
+                    <li><a href="#">专业介绍</a></li>
+                    <li><a href="#">导师队伍</a></li>
+                    <li><a href="#">学术成果</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="cta-btn">在线咨询</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container" style="padding: 0;">
+            <h1>铸魂育人，艺苑军魂</h1>
+            <p>解放军艺术学院研究生教育致力于培养具有坚定政治方向、深厚艺术造诣和扎实军事素养的高层次艺术人才。</p>
+            <div style="margin-top: 30px;">
+                <a href="#" class="cta-btn" style="background-color: var(--white); color: var(--primary-color);">查看招生目录</a>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>50+</h3>
+                    <p>硕士专业点</p>
+                </div>
+                <div class="stat-item">
+                    <h3>300+</h3>
+                    <p>在读研究生</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>专业对口率</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- 专业设置 -->
+        <section id="majors">
+            <div class="section-header">
+                <h2>研究生专业方向</h2>
+                <p>依托军队文化事业建设需求，设有音乐、舞蹈、美术、戏剧影视文学等多个学科领域，注重理论与实践相结合。</p>
+            </div>
+            <div class="areas-grid">
+                <div class="area-card">
+                    <div class="area-icon">🎵</div>
+                    <h3>音乐学</h3>
+                    <p>声乐、器乐表演及音乐理论研究方向，培养军队文艺骨干。</p>
+                </div>
+                <div class="area-card">
+                    <div class="area-icon">💃</div>
+                    <h3>舞蹈学</h3>
+                    <p>中国古典舞、芭蕾舞及军事舞蹈编导，融合传统与现代军旅风格。</p>
+                </div>
+                <div class="area-card">
+                    <div class="area-icon">🎨</div>
+                    <h3>美术学</h3>
+                    <p>中国画、油画、版画及雕塑创作，展现军旅题材的艺术魅力。</p>
+                </div>
+                <div class="area-card">
+                    <div class="area-icon">🎬</div>
+                    <h3>戏剧影视</h3>
+                    <p>戏剧影视文学、导演、表演等专业，服务军队文化宣传工作。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 招生与培养 -->
+        <section id="admission" style="margin-top: 80px;">
+            <div class="admission-layout">
+                <aside class="info-sidebar">
+                    <h3>招生指南</h3>
+                    <ul class="info-list">
+                        <li><strong>报考条件：</strong>军队在职干部或军队院校应届本科毕业生。</li>
+                        <li><strong>报名方式：</strong>全国硕士研究生统一招生考试。</li>
+                        <li><strong>初试科目：</strong>政治理论、英语、专业基础课、专业综合课。</li>
+                        <li><strong>复试内容：</strong>专业面试、专业笔试、英语听力与口语。</li>
+                        <li><strong>学制与学费：</strong>基本学制3年，享受军队干部相关待遇。</li>
+                    </ul>
+                </aside>
+                <article class="info-content">
+                    <div class="info-block">
+                        <h3>培养目标</h3>
+                        <p>研究生教育坚持“为兵服务”的办学宗旨，旨在培养德才兼备、身心双优的高层次艺术人才。学生不仅要具备扎实的专业技能，还需掌握系统的艺术理论，具备较强的创作能力和组织协调能力，能够胜任军队文艺创作、表演及教学研究工作。</p>
+                    </div>
+                    <div class="info-block">
+                        <h3>科研与创作</h3>
+                        <p>鼓励研究生结合军营生活实践进行艺术创作。学院设有多个科研创作基地，支持研究生参与重大军事题材文艺作品创作、军队文化政策研究及非物质文化遗产保护等工作。</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- 最新动态 -->
+        <section id="news" style="margin-top: 80px;">
+            <div class="section-header">
+                <h2>学院动态与通知</h2>
+                <p>了解最新的招生信息、学术讲座及研究生培养相关通知。</p>
+            </div>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-content">
+                        <span class="news-date">2023-10-15</span>
+                        <h4><a href="#">关于2024年硕士研究生招生专业目录的公示</a></h4>
+                        <p>根据军队院校招生工作安排，现将2024年研究生招生专业及研究方向进行公示...</p>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-content">
+                        <span class="news-date">2023-09-20</span>
+                        <h4><a href="#">研究生院举办2023级新生入学教育大会</a></h4>
+                        <p>旨在帮助新生尽快适应研究生阶段的学习生活，明确研究方向与学术规范。</p>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-content">
+                        <span class="news-date">2023-08-05</span>
+                        <h4><a href="#">优秀毕业生作品巡回展在京开幕</a></h4>
+                        <p>本次展览集中展示了近三届毕业生的优秀创作成果，展现了军艺学子的艺术风采。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>常见问题解答</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">军队在职干部报考研究生有什么优势？</div>
+                    <div class="faq-answer">在职干部报考通常具有工作经验优势，且在政审、体检及后续培养中享有相关政策支持。学院注重学员的实战应用能力培养。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">研究生毕业后是否分配工作？</div>
+                    <div class="faq-answer">研究生毕业通常按照军队现行干部政策办理毕业分配，具体分配去向和岗位根据军队人才需求及个人专业特长综合确定。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">非军队人员能否报考？</div>
+                    <div class="faq-answer">解放军艺术学院研究生招生主要面向军队内部系统。非军队人员（如地方高校毕业生）通常不作为常规招生对象，具体需参照当年教育部及军队招生的相关规定。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>关于我们</h4>
+                <p style="font-size: 14px; line-height: 1.8;">中国人民解放军艺术学院（简称“军艺”）是中国人民解放军唯一一所高等艺术院校，研究生教育是其人才培养的重要基地。</p>
+            </div>
+            <div class="footer-col">
+                <h4>快速链接</h4>
+                <ul>
+                    <li><a href="#">招生信息网</a></li>
+                    <li><a href="#">研究生院官网</a></li>
+                    <li><a href="#">国家研究生招生信息网</a></li>
+                    <li><a href="#">学术期刊</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>联系方式</h4>
+                <ul>
+                    <li>地址：北京市海淀区中关村南大街17号</li>
+                    <li>邮编：100081</li>
+                    <li>电话：010-XXXX-XXXX</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 解放军艺术学院研究生教育信息服务平台. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的 FAQ 交互逻辑
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // 关闭其他打开的项
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // 切换当前项
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
