@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>红猫大本营 - 经典国产动画资料库与粉丝社区</title>
+    <meta name="description" content="红猫大本营是一个专注于国产经典动画《虹猫蓝兔七侠传》及相关系列作品（如《红猫蓝兔》、《蓝猫淘气3000问》等）的粉丝资料库、剧情梳理、角色百科及同人创作交流平台。">
+    <meta name="keywords" content="红猫大本营, 虹猫蓝兔, 红猫, 七侠传, 国产动画, 蓝猫淘气3000问, 动漫百科, 粉丝社区">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-red: #D32F2F;
+            --primary-dark: #8E0000;
+            --accent-gold: #FFC107;
+            --bg-color: #F9F9F9;
+            --card-bg: #FFFFFF;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border-radius: 8px;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-red);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-red);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--primary-dark);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-red);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-red);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-red) 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://picsum.photos/seed/redcathero/1920/1080'); /* Generic placeholder */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            mix-blend-mode: overlay;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            font-weight: bold;
+            border-radius: 30px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
+        }
+
+        /* Features Grid */
+        .features {
+            padding: 60px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-red);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            padding: 60px 0;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        /* Character Section */
+        .character-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .char-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+
+        .char-card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .char-img {
+            height: 250px;
+            width: 100%;
+            background-color: #eee;
+        }
+
+        .char-info {
+            padding: 15px;
+        }
+
+        .char-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--primary-dark);
+        }
+
+        .char-info .element {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: inline-block;
+            padding: 2px 8px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        .char-info p {
+            font-size: 0.85rem;
+            color: #666;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .sidebar-box {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .sidebar-box h3 {
+            border-left: 4px solid var(--primary-red);
+            padding-left: 10px;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .episode-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+        }
+
+        .episode-list li:last-child {
+            border-bottom: none;
+        }
+
+        .episode-list a:hover {
+            color: var(--primary-red);
+            text-decoration: underline;
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: #f5f5f5;
+            color: #555;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+
+        .tag:hover {
+            background: var(--primary-red);
+            color: white;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 60px 0;
+            margin-top: 40px;
+        }
+
+        .quote-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .quote-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .quote-author {
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        /* FAQ */
+        .faq-section {
+            padding: 60px 0;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            background-color: #fff;
+            transition: background 0.2s;
+        }
+
+        .faq-question:hover {
+            background-color: #f9f9f9;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--primary-red);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 20px;
+            background-color: #fafafa;
+            color: var(--text-secondary);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #aaa;
+            padding: 40px 0 20px;
+            font-size: 0.9rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-red);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                position: relative;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding: 20px;
+            }
+
+            nav.open {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <span style="font-size: 1.8rem;">🦁</span> 红猫大本营
+            </a>
+            <div class="mobile-menu-btn" onclick="toggleMenu()">☰</div>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#characters">七侠人物</a></li>
+                    <li><a href="#timeline">剧情时间线</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                    <li><a href="#community">粉丝社区</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>传承中华武侠精神<br>重温经典动画</h1>
+                <p>红猫大本营致力于收录《虹猫蓝兔七侠传》及其衍生作品的完整剧情、角色解析与高清剧照，为国产动画爱好者提供一站式资料库。</p>
+                <a href="#characters" class="btn">探索七侠档案</a>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="container features">
+            <div class="features-grid">
+                <article class="feature-card">
+                    <div class="feature-icon">📜</div>
+                    <h3>剧情百科</h3>
+                    <p>详尽梳理《虹猫蓝兔七侠传》全156集剧情脉络，包含黑心虎阴谋、五剑合璧等核心事件解析。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">⚔️</div>
+                    <h3>角色图鉴</h3>
+                    <p>收录虹猫、蓝兔、大奔等七位主角的详细属性、武功招式及人物关系图谱。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>同人创作</h3>
+                    <p>汇聚网友优秀绘画、小说及剪辑作品，展示红猫蓝兔IP的多样魅力。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>互动社区</h3>
+                    <p>提供论坛交流入口，分享观看心得，讨论剧情细节，结识同好。</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Main Content: Characters & Sidebar -->
+        <section id="characters" class="container main-content">
+            <div class="content-area">
+                <div class="section-header">
+                    <h2>七侠人物志</h2>
+                    <p>了解虹猫蓝兔宇宙中的核心角色</p>
+                </div>
+                
+                <div class="character-list">
+                    <!-- Character 1 -->
+                    <article class="char-card">
+                        <img src="https://picsum.photos/seed/hongmao/400/500" alt="虹猫" class="char-img">
+                        <div class="char-info">
+                            <h3>虹猫</h3>
+                            <span class="element">火</span>
+                            <p>少侠，青城剑派传人。性格豪爽、机智勇敢，是七剑之首。精通七剑合璧，一心守护和平。</p>
+                        </div>
+                    </article>
+                    <!-- Character 2 -->
+                    <article class="char-card">
+                        <img src="https://picsum.photos/seed/lantu/400/500" alt="蓝兔" class="char-img">
+                        <div class="char-info">
+                            <h3>蓝兔</h3>
+                            <span class="element">冰</span>
+                            <p>冰魄剑传人，绝世佳人。武艺高强，心地善良，与虹猫感情深厚，是剧中备受喜爱的女主角。</p>
+                        </div>
+                    </article>
+                    <!-- Character 3 -->
+                    <article class="char-card">
+                        <img src="https://picsum.photos/seed/dabeng/400/500" alt="大奔" class="char-img">
+                        <div class="char-info">
+                            <h3>大奔</h3>
+                            <span class="element">土</span>
+                            <p>山猫，山崩剑传人。性格憨厚、幽默，虽然有些鲁莽，但极具正义感，是团队中的开心果。</p>
+                        </div>
+                    </article>
+                    <!-- Character 4 -->
+                    <article class="char-card">
+                        <img src="https://picsum.photos/seed/baihu/400/500" alt="白鹤" class="char-img">
+                        <div class="char-info">
+                            <h3>白鹤</h3>
+                            <span class="element">风</span>
+                            <p>鹤啸剑传人，七侠中最年长者。沉稳内敛，经验丰富，在团队中扮演着智囊的角色。</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <aside>
+                <!-- Latest Episodes -->
+                <div class="sidebar-box">
+                    <h3>剧情更新</h3>
+                    <ul class="episode-list">
+                        <li><a href="#">第1-10集：黑心虎的阴谋</a> <span>已完结</span></li>
+                        <li><a href="#">第11-30集：寻找七剑传人</a> <span>已完结</span></li>
+                        <li><a href="#">第31-60集：魔教入侵</a> <span>已完结</span></li>
+                        <li><a href="#">第61-90集：决战黑心虎</a> <span>已完结</span></li>
+                        <li><a href="#">第91-156集：五剑合璧</a> <span>已完结</span></li>
+                    </ul>
+                </div>
+
+                <!-- Tags -->
+                <div class="sidebar-box">
+                    <h3>热门标签</h3>
+                    <div class="tag-cloud">
+                        <a href="#" class="tag">虹猫蓝兔</a>
+                        <a href="#" class="tag">七侠传</a>
+                        <a href="#" class="tag">国产动画</a>
+                        <a href="#" class="tag">武侠</a>
+                        <a href="#" class="tag">童年回忆</a>
+                        <a href="#" class="tag">五剑合璧</a>
+                        <a href="#" class="tag">黑心虎</a>
+                        <a href="#" class="tag">莎丽</a>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <!-- Quote Section -->
+        <section class="quote-section">
+            <div class="container quote-container">
+                <p class="quote-text">“侠之大者，为国为民。红猫蓝兔不仅教会了我们武功，更教会了我们什么是责任与担当。”</p>
+                <p class="quote-author">—— 粉丝寄语</p>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="container faq-section">
+            <div class="section-header">
+                <h2>常见问题</h2>
+                <p>关于《虹猫蓝兔七侠传》及相关作品</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">《虹猫蓝兔七侠传》一共多少集？</div>
+                    <div class="faq-answer">
+                        <p>《虹猫蓝兔七侠传》全剧共156集，分为上下两部。上部讲述七剑合璧对抗黑心虎的故事，下部涉及后续的江湖恩怨与和平守护。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">在哪里可以观看正版动画？</div>
+                    <div class="faq-answer">
+                        <p>建议关注各大正规视频平台（如腾讯视频、爱奇艺等）的版权专区，支持正版创作。本站仅提供剧情资料与回忆内容。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">红猫大本营提供下载服务吗？</div>
+                    <div class="faq-answer">
+                        <p>本站专注于内容整理与展示，不提供任何影视资源的直接下载服务，请遵守版权法律法规。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">除了七侠传，还有哪些相关作品？</div>
+                    <div class="faq-answer">
+                        <p>除了《虹猫蓝兔七侠传》，该IP还包括《虹猫蓝兔火凤凰》、《蓝猫淘气3000问》系列、《虹猫蓝兔光荣使命》等衍生作品。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>关于红猫大本营</h4>
+                    <p>红猫大本营是一个非官方的粉丝站，旨在整理和分享国产经典动画《虹猫蓝兔》系列的相关资料与回忆。我们尊重原创版权，所有内容仅供学习交流。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#characters">角色图鉴</a></li>
+                        <li><a href="#timeline">剧情时间线</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>友情链接</h4>
+                    <ul>
+                        <li><a href="#">虹猫蓝兔官方微博</a></li>
+                        <li><a href="#">国产动漫发展论坛</a></li>
+                        <li><a href="#">经典动画收藏馆</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 红猫大本营. All Rights Reserved. 本站为粉丝自制内容。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const nav = document.getElementById('main-nav');
+            nav.classList.toggle('open');
+        }
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const nav = document.getElementById('main-nav');
+                    if (nav.classList.contains('open')) {
+                        nav.classList.remove('open');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
