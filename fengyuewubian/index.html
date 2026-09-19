@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>风月无边短剧-精品短剧推荐与在线观看平台</title>
+    <meta name="description" content="风月无边短剧网提供最新、最热的短剧资源，涵盖都市情感、古装言情、悬疑推理等热门题材。高清免费观看，随时随地畅享精彩剧情。">
+    <meta name="keywords" content="风月无边短剧,短剧,在线短剧,免费短剧,高清短剧">
+    <style>
+        :root {
+            --primary-color: #d4335d;
+            --secondary-color: #8e2de2;
+            --accent-color: #fbc531;
+            --text-main: #2f3542;
+            --text-light: #747d8c;
+            --bg-body: #f1f2f6;
+            --bg-card: #ffffff;
+            --border-radius: 12px;
+            --container-width: 1200px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 头部导航 */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            background: rgba(255,255,255,0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: rgba(255,255,255,0.9);
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: white;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .search-box {
+            display: flex;
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 5px 10px;
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            color: white;
+            outline: none;
+            width: 150px;
+        }
+
+        .search-box button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background: url('https://picsum.photos/seed/drama1/1600/900') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.3));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+
+        .hero-tag {
+            background-color: var(--accent-color);
+            color: var(--text-main);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: transform 0.2s, background-color 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #c0354e;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 10px;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        /* 分类导航 */
+        .category-nav {
+            background: var(--bg-card);
+            padding: 20px 0;
+            margin-bottom: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .category-list {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .category-item {
+            padding: 8px 20px;
+            border-radius: 20px;
+            background-color: #f1f2f6;
+            color: var(--text-main);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .category-item:hover, .category-item.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* 主要内容区 */
+        .main-content {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        /* 短剧列表 */
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .more-link {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: normal;
+        }
+
+        .more-link:hover {
+            color: var(--primary-color);
+        }
+
+        .drama-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .drama-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .drama-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-cover {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .card-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .drama-card:hover .card-cover img {
+            transform: scale(1.05);
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(0,0,0,0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .drama-card:hover .play-icon {
+            opacity: 1;
+        }
+
+        .card-info {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-meta {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-tags span {
+            font-size: 0.75rem;
+            background: #f1f2f6;
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: var(--text-light);
+        }
+
+        /* 侧边栏 */
+        aside .widget {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .widget-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .rank-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .rank-num {
+            width: 24px;
+            height: 24px;
+            background: #eee;
+            color: #666;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .rank-list li:nth-child(1) .rank-num { background: #ff4757; color: white; }
+        .rank-list li:nth-child(2) .rank-num { background: #ffa502; color: white; }
+        .rank-list li:nth-child(3) .rank-num { background: #2ed573; color: white; }
+
+        .rank-info {
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* 广告位 */
+        .ad-banner {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #f1f2f6, #dfe4ea);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a4b0be;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+            border: 2px dashed #ccc;
+        }
+
+        /* 特性介绍 */
+        .features {
+            background: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .feature-item i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .feature-item h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .feature-item p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #2f3542;
+            color: #a4b0be;
+            padding: 50px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none; /* 移动端简化导航隐藏 */
+            }
+            .header-content {
+                justify-content: center;
+            }
+            .search-box {
+                display: none;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-content">
+        <a href="#" class="logo">
+            <span>风月无边短剧</span> FENGYUE
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#">最新更新</a></li>
+                <li><a href="#">热门榜单</a></li>
+                <li><a href="#">分类大全</a></li>
+                <li><a href="#">我的收藏</a></li>
+            </ul>
+        </nav>
+        <div class="search-box">
+            <input type="text" placeholder="搜索短剧...">
+            <button>🔍</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <span class="hero-tag">本周重磅推荐</span>
+            <h1>豪门错爱：总裁的替身前妻</h1>
+            <p>当爱情遭遇算计，当真心换来背叛，她如何在豪门风云中逆风翻盘？精彩剧情，不容错过。</p>
+            <div>
+                <button class="btn">立即观看</button>
+                <button class="btn btn-outline">加入片单</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- 分类导航 -->
+        <div class="category-nav">
+            <ul class="category-list">
+                <li class="category-item active">全部</li>
+                <li class="category-item">都市言情</li>
+                <li class="category-item">古装穿越</li>
+                <li class="category-item">悬疑推理</li>
+                <li class="category-item">神医下山</li>
+                <li class="category-item">赘婿逆袭</li>
+                <li class="category-item">甜宠爽剧</li>
+                <li class="category-item">重生复仇</li>
+            </ul>
+        </div>
+
+        <!-- 广告位 -->
+        <div class="ad-banner">
+            广告位：VIP会员尊享权益
+        </div>
+
+        <!-- 主要内容 -->
+        <div class="main-content">
+            <!-- 左侧：短剧列表 -->
+            <section class="drama-section">
+                <div class="section-title">
+                    <h2>热门短剧</h2>
+                    <a href="#" class="more-link">查看更多 &rarr;</a>
+                </div>
+
+                <div class="drama-grid">
+                    <!-- Card 1 -->
+                    <article class="drama-card">
+                        <div class="card-cover">
+                            <img src="https://picsum.photos/seed/drama2/400/600" alt="短剧封面">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">闪婚蜜爱：陆少宠上天</h3>
+                            <div class="card-meta">
+                                <span>更新至 85 集</span>
+                                <span>3.2万人看过</span>
+                            </div>
+                            <div class="card-tags">
+                                <span>甜宠</span>
+                                <span>豪门</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="drama-card">
+                        <div class="card-cover">
+                            <img src="https://picsum.photos/seed/drama3/400/600" alt="短剧封面">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">神医下山：开局被退婚</h3>
+                            <div class="card-meta">
+                                <span>更新至 120 集</span>
+                                <span>5.1万人看过</span>
+                            </div>
+                            <div class="card-tags">
+                                <span>都市</span>
+                                <span>修仙</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="drama-card">
+                        <div class="card-cover">
+                            <img src="https://picsum.photos/seed/drama4/400/600" alt="短剧封面">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">绝世神医：废柴大小姐</h3>
+                            <div class="card-meta">
+                                <span>更新至 90 集</span>
+                                <span>2.8万人看过</span>
+                            </div>
+                            <div class="card-tags">
+                                <span>古风</span>
+                                <span>逆袭</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 4 -->
+                    <article class="drama-card">
+                        <div class="card-cover">
+                            <img src="https://picsum.photos/seed/drama5/400/600" alt="短剧封面">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">首席的替身情人</h3>
+                            <div class="card-meta">
+                                <span>更新至 60 集</span>
+                                <span>4.5万人看过</span>
+                            </div>
+                            <div class="card-tags">
+                                <span>虐恋</span>
+                                <span>豪门</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 5 -->
+                    <article class="drama-card">
+                        <div class="card-cover">
+                            <img src="https://picsum.photos/seed/drama6/400/600" alt="短剧封面">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">我在豪门当保姆</h3>
+                            <div class="card-meta">
+                                <span>更新至 45 集</span>
+                                <span>1.9万人看过</span>
+                            </div>
+                            <div class="card-tags">
+                                <span>职场</span>
+                                <span>搞笑</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 6 -->
+                    <article class="drama-card">
+                        <div class="card-cover">
+                            <img src="https://picsum.photos/seed/drama7/400/600" alt="短剧封面">
+                            <div class="play-icon">▶</div>
+                        </div>
+                        <div class="card-info">
+                            <h3 class="card-title">龙王殿：九千岁归来</h3>
+                            <div class="card-meta">
+                                <span>更新至 100 集</span>
+                                <span>6.2万人看过</span>
+                            </div>
+                            <div class="card-tags">
+                                <span>玄幻</span>
+                                <span>热血</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- 右侧：侧边栏 -->
+            <aside>
+                <!-- 榜单 -->
+                <div class="widget">
+                    <h3 class="widget-title">本周热度榜</h3>
+                    <ul class="rank-list">
+                        <li>
+                            <span class="rank-num">1</span>
+                            <span class="rank-info">闪婚蜜爱：陆少宠上天</span>
+                        </li>
+                        <li>
+                            <span class="rank-num">2</span>
+                            <span class="rank-info">神医下山：开局被退婚</span>
+                        </li>
+                        <li>
+                            <span class="rank-num">3</span>
+                            <span class="rank-info">龙王殿：九千岁归来</span>
+                        </li>
+                        <li>
+                            <span class="rank-num">4</span>
+                            <span class="rank-info">绝世神医：废柴大小姐</span>
+                        </li>
+                        <li>
+                            <span class="rank-num">5</span>
+                            <span class="rank-info">首席的替身情人</span>
+                        </li>
+                        <li>
+                            <span class="rank-num">6</span>
+                            <span class="rank-info">我在豪门当保姆</span>
+                        </li>
+                        <li>
+                            <span class="rank-num">7</span>
+                            <span class="rank-info">重生之财源滚滚来</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 标签云 -->
+                <div class="widget">
+                    <h3 class="widget-title">热门标签</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        <span style="background:#f1f2f6; padding:4px 10px; border-radius:4px; font-size:0.85rem; color:#555;">短剧</span>
+                        <span style="background:#f1f2f6; padding:4px 10px; border-radius:4px; font-size:0.85rem; color:#555;">在线看</span>
+                        <span style="background:#f1f2f6; padding:4px 10px; border-radius:4px; font-size:0.85rem; color:#555;">高清</span>
+                        <span style="background:#f1f2f6; padding:4px 10px; border-radius:4px; font-size:0.85rem; color:#555;">免费</span>
+                        <span style="background:#f1f2f6; padding:4px 10px; border-radius:4px; font-size:0.85rem; color:#555;">短剧推荐</span>
+                        <span style="background:#f1f2f6; padding:4px 10px; border-radius:4px; font-size:0.85rem; color:#555;">爆笑</span>
+                        <span style="background:#f1f2f6; padding:4px 10px; border-radius:4px; font-size:0.85rem; color:#555;">言情</span>
+                        <span style="background:#f1f2f6; padding:4px 10px; border-radius:4px; font-size:0.85rem; color:#555;">古装</span>
+                    </div>
+                </div>
+
+                <!-- 更新提醒 -->
+                <div class="widget">
+                    <h3 class="widget-title">追更提醒</h3>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">订阅您喜欢的短剧，更新第一时间通知。</p>
+                    <input type="email" placeholder="输入您的邮箱" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; margin-bottom: 10px;">
+                    <button class="btn" style="width: 100%; font-size: 0.9rem;">订阅</button>
+                </div>
+            </aside>
+        </div>
+
+        <!-- 平台优势 -->
+        <section class="features">
+            <div class="container">
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div style="font-size: 2rem;">⚡</div>
+                        <h3>极速加载</h3>
+                        <p>智能CDN加速，高清流畅不卡顿</p>
+                    </div>
+                    <div class="feature-item">
+                        <div style="font-size: 2rem;">📱</div>
+                        <h3>多端同步</h3>
+                        <p>手机、平板、电脑随时随地畅看</p>
+                    </div>
+                    <div class="feature-item">
+                        <div style="font-size: 2rem;">💰</div>
+                        <h3>免费观看</h3>
+                        <p>海量短剧资源，会员特权尊享</p>
+                    </div>
+                    <div class="feature-item">
+                        <div style="font-size: 2rem;">🔒</div>
+                        <h3>安全纯净</h3>
+                        <p>无广告干扰，绿色健康的观影环境</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>关于风月无边短剧</h4>
+                <p style="font-size: 0.9rem; line-height: 1.8;">
+                    风月无边短剧网致力于为用户提供最优质的短剧观看体验。我们汇集全网热门短剧资源，涵盖都市、古装、悬疑、玄幻等多种题材，满足不同用户的观影需求。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>快速导航</h4>
+                <ul>
+                    <li><a href="#">网站地图</a></li>
+                    <li><a href="#">最新上线</a></li>
+                    <li><a href="#">热门排行</a></li>
+                    <li><a href="#">会员中心</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>热门分类</h4>
+                <ul>
+                    <li><a href="#">都市言情</a></li>
+                    <li><a href="#">古装穿越</a></li>
+                    <li><a href="#">神医下山</a></li>
+                    <li><a href="#">赘婿逆袭</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>联系我们</h4>
+                <ul>
+                    <li>合作邮箱：contact@fengyue.com</li>
+                    <li>客服热线：400-123-4567</li>
+                    <li>工作时间：9:00 - 22:00</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 风月无边短剧网 版权所有. 本站内容均来自互联网，仅供学习交流，请于下载后24小时内删除。</p>
+        </div>
+    </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+
+</body>
+                              </html>
