@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="安全生产检查报告生成与管理系统。提供标准化的检查表格模板、隐患排查流程指导及合规性分析工具，帮助企业高效完成安全检查并生成专业报告。">
+    <meta name="keywords" content="安全生产检查报告,隐患排查,安全检查模板,企业安全,合规管理">
+    <title>安全生产检查报告-标准化隐患排查与合规管理平台</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 头部导航 */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions .btn {
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #1a252f;
+        }
+
+        /* Hero 区域 */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--success-color);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        /* 核心功能区 */
+        .features {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            border-top: 4px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--accent-color);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* 检查报告流程 */
+        .process-section {
+            background-color: white;
+            padding: 80px 0;
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 50px;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #e0e0e0;
+            z-index: 0;
+        }
+
+        .step {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            flex: 1;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--primary-color);
+        }
+
+        .step h4 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .step p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            padding: 0 10px;
+        }
+
+        /* 报告模板展示 */
+        .templates-section {
+            padding: 80px 0;
+        }
+
+        .template-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .template-item {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .template-preview {
+            height: 160px;
+            background-color: #eef2f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a0aec0;
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .template-preview::after {
+            content: '📄';
+            font-size: 4rem;
+        }
+
+        .template-info {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .template-info h4 {
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        .template-info p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            flex: 1;
+        }
+
+        .template-tag {
+            display: inline-block;
+            background: #f0f2f5;
+            color: var(--text-secondary);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-bottom: 10px;
+        }
+
+        /* 常见问题 */
+        .faq-section {
+            background-color: white;
+            padding: 80px 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            color: var(--primary-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.2rem;
+        }
+
+        .faq-answer {
+            margin-top: 15px;
+            color: var(--text-secondary);
+            display: none;
+            padding-left: 10px;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255,255,255,0.7);
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .nav-wrapper {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .process-steps {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .process-steps::before {
+                width: 2px;
+                height: 100%;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .step {
+                display: flex;
+                align-items: flex-start;
+                text-align: left;
+                gap: 20px;
+            }
+
+            .step-number {
+                margin: 0;
+                flex-shrink: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">
+                <span>⚡</span> 安全智检
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#features">功能特点</a></li>
+                    <li><a href="#process">检查流程</a></li>
+                    <li><a href="#templates">报告模板</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn btn-outline">登录</a>
+                <a href="#" class="btn btn-primary">免费试用</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>标准化安全生产检查报告生成平台</h1>
+                <p>帮助企业建立完善的隐患排查治理体系，在线完成现场检查、风险评级、隐患整改及合规报告生成，确保企业安全生产零事故。</p>
+                <div style="display: flex; justify-content: center; gap: 15px;">
+                    <a href="#templates" class="btn btn-primary" style="padding: 12px 30px; font-size: 1.1rem;">查看报告模板</a>
+                    <a href="#process" class="btn btn-outline" style="padding: 12px 30px; font-size: 1.1rem;">了解流程</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>5000+</h3>
+                        <p>企业用户信赖</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>98%</h3>
+                        <p>报告合规率</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>24h</h3>
+                        <p>即时生成报告</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features container">
+            <div class="section-title">
+                <h2>全方位安全检查管理工具</h2>
+                <p>不仅仅是生成表格，我们提供从发现隐患到整改闭环的全流程数字化管理方案。</p>
+            </div>
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <span class="feature-icon">📋</span>
+                    <h3>智能表单定制</h3>
+                    <p>根据行业标准（如GB/T 33000）和行业特性，自动匹配检查项。支持自定义添加风险点、整改措施及责任人字段。</p>
+                </article>
+                <article class="feature-card">
+                    <span class="feature-icon">📸</span>
+                    <h3>现场证据留痕</h3>
+                    <p>检查过程中可直接上传现场照片、视频或语音记录，作为报告附件，确保证据链完整，避免推诿扯皮。</p>
+                </article>
+                <article class="feature-card">
+                    <span class="feature-icon">📊</span>
+                    <h3>数据可视化分析</h3>
+                    <p>自动生成隐患分布热力图、整改率趋势图及风险评级统计，为管理层提供直观的决策依据。</p>
+                </article>
+                <article class="feature-card">
+                    <span class="feature-icon">🔔</span>
+                    <h3>整改任务督办</h3>
+                    <p>系统自动将隐患任务分配给责任人，设置整改期限，逾期自动预警提醒，确保隐患不过夜。</p>
+                </article>
+                <article class="feature-card">
+                    <span class="feature-icon">📑</span>
+                    <h3>多格式导出</h3>
+                    <p>支持一键导出Word、PDF格式的安全生产检查报告，可直接用于政府汇报或存档备案。</p>
+                </article>
+                <article class="feature-card">
+                    <span class="feature-icon">🔒</span>
+                    <h3>数据安全加密</h3>
+                    <p>采用企业级SSL加密传输及存储，确保企业安全数据不被泄露，符合等保合规要求。</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="process" class="process-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>标准化的检查报告生成流程</h2>
+                    <p>简单四步，即可完成从现场检查到合规报告的闭环管理。</p>
+                </div>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>制定检查方案</h4>
+                        <p>选择对应行业的检查表模板，或自定义检查清单，设定检查时间、地点及参与人员。</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>现场隐患排查</h4>
+                        <p>检查人员现场逐项打分，发现隐患立即拍照上传，系统自动识别风险等级（一般/重大）。</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>整改与复查</h4>
+                        <p>责任人对隐患进行整改，上传整改前后的对比照片。系统自动安排复查人员验证。</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <h4>生成合规报告</h4>
+                        <p>系统汇总检查数据，自动排版生成包含隐患列表、整改记录及评分结论的最终报告。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="templates" class="templates-section container">
+            <div class="section-title">
+                <h2>热门报告模板库</h2>
+                <p>覆盖建筑、化工、制造、电力等20+个行业，开箱即用。</p>
+            </div>
+            <div class="template-list">
+                <div class="template-item">
+                    <div class="template-info">
+                        <span class="template-tag">通用版</span>
+                        <h4>企业综合安全检查报告</h4>
+                        <p>适用于一般工贸企业，涵盖消防、用电、机械、危化品等基础检查项。</p>
+                        <a href="#" class="btn-outline" style="font-size: 0.9rem; padding: 5px 10px;">查看详情</a>
+                    </div>
+                </div>
+                <div class="template-item">
+                    <div class="template-info">
+                        <span class="template-tag">高危行业</span>
+                        <h4>危险化学品安全检查表</h4>
+                        <p>针对储存、使用、经营环节的特殊风险点，符合《危险化学品安全管理条例》。</p>
+                        <a href="#" class="btn-outline" style="font-size: 0.9rem; padding: 5px 10px;">查看详情</a>
+                    </div>
+                </div>
+                <div class="template-item">
+                    <div class="template-info">
+                        <span class="template-tag">建筑工地</span>
+                        <h4>建筑施工安全专项报告</h4>
+                        <p>包含深基坑、高支模、起重机械等关键部位的检查记录与验收单。</p>
+                        <a href="#" class="btn-outline" style="font-size: 0.9rem; padding: 5px 10px;">查看详情</a>
+                    </div>
+                </div>
+                <div class="template-item">
+                    <div class="template-info">
+                        <span class="template-tag">消防管理</span>
+                        <h4>消防安全疏散检查报告</h4>
+                        <p>侧重于疏散通道、消防设施完好率及动火作业管理的专项检查。</p>
+                        <a href="#" class="btn-outline" style="font-size: 0.9rem; padding: 5px 10px;">查看详情</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="faq-section">
+            <div class="section-title">
+                <h2>常见问题解答</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">生成的安全生产检查报告是否符合政府要求？</div>
+                    <div class="faq-answer">我们的模板库参照国家及地方最新的安全生产法律法规设计，并定期更新。您可以根据当地监管部门的具体要求进行微调，确保报告格式合规。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">如果检查过程中发现重大隐患，系统如何处理？</div>
+                    <div class="faq-answer">系统会对隐患进行自动分级，重大隐患会触发红色预警，强制要求上传详细的整改方案，并提升督办级别，确保风险可控。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">支持多人同时进行一次检查吗？</div>
+                    <div class="faq-answer">支持。您可以创建检查任务，邀请多名安全员同时在线填写，系统会自动合并数据并生成最终报告。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">如何导出正式的PDF报告？</div>
+                    <div class="faq-answer">在报告预览页面，点击“导出”按钮即可选择PDF格式。系统会自动排版，确保打印效果清晰，符合归档标准。</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>安全智检</h4>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                        致力于为中小企业提供低成本、高效率的数字化安全管理解决方案，守护企业安全生产红线。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>产品服务</h4>
+                    <ul>
+                        <li><a href="#">检查报告生成</a></li>
+                        <li><a href="#">隐患排查系统</a></li>
+                        <li><a href="#">安全培训课程</a></li>
+                        <li><a href="#">API接口对接</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>支持中心</h4>
+                    <ul>
+                        <li><a href="#">使用手册</a></li>
+                        <li><a href="#">行业法规库</a></li>
+                        <li><a href="#">联系客服</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li>电话：400-123-4567</li>
+                        <li>邮箱：support@safecheck.com</li>
+                        <li>地址：北京市朝阳区科技园A座</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 安全智检平台 版权所有 | 仅供演示使用
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+
+    <script>
+        // FAQ 交互逻辑
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentNode;
+                parent.classList.toggle('active');
+            });
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+              </html>
