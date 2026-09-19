@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="冒险迷宫村大成功攻略指南：包含新手开局策略、角色培养推荐、大成功概率提升技巧及迷宫探索心得，助你打造最强村庄。">
+    <meta name="keywords" content="冒险迷宫村, 大成功, 攻略, 游戏指南, 策略">
+    <title>冒险迷宫村-大成功概率提升与新手开局策略指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e67e22;
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #7f8c8d;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--accent-color);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Main Content Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 50px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        /* Guide Cards */
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .card-img {
+            height: 160px;
+            background-color: #ddd;
+            position: relative;
+        }
+        
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 4px 8px;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .card-link {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Sidebar Widget */
+        .sidebar-widget {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .widget-title {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .strategy-list li {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .strategy-list li:last-child {
+            border-bottom: none;
+        }
+
+        .strategy-list h4 {
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+        }
+
+        .strategy-list p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            margin-bottom: 15px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-question:hover {
+            background-color: #fafafa;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-light);
+            display: none;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '−';
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #bdc3c7;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #7f8c8d;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">冒险迷宫村<span>攻略</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#strategy">核心策略</a></li>
+                    <li><a href="#characters">角色图鉴</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>打造繁荣的冒险迷宫村</h1>
+                <p>掌握大成功概率技巧，优化资源分配，让你的冒险者在迷宫中收获丰厚的宝藏与经验。</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>85%</h3>
+                        <p>大成功提升率</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>3.2x</h3>
+                        <p>收益倍数</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>100+</h3>
+                        <p>通关迷宫</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container main-grid">
+            <!-- Left Column -->
+            <div class="content-area">
+                
+                <!-- Strategy Section -->
+                <section id="strategy">
+                    <div class="section-header">
+                        <h2 class="section-title">大成功核心策略</h2>
+                    </div>
+                    <div class="guide-grid">
+                        <article class="card">
+                            <div class="card-img">
+                                <img src="https://picsum.photos/seed/magic/400/250" alt="技能强化">
+                                <span class="card-badge">必读</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">提升技能熟练度</h3>
+                                <p class="card-desc">高熟练度的技能在判定时更容易触发“大成功”状态。建议优先将主要战斗技能升至满级。</p>
+                                <a href="#" class="card-link">查看详情 &rarr;</a>
+                            </div>
+                        </article>
+
+                        <article class="card">
+                            <div class="card-img">
+                                <img src="https://picsum.photos/seed/food/400/250" alt="饮食管理">
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">饮食管理技巧</h3>
+                                <p class="card-desc">特定的食物组合能临时提升幸运属性，是应对高难度迷宫判定的关键辅助手段。</p>
+                                <a href="#" class="card-link">查看详情 &rarr;</a>
+                            </div>
+                        </article>
+
+                        <article class="card">
+                            <div class="card-img">
+                                <img src="https://picsum.photos/seed/weapon/400/250" alt="装备选择">
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">装备词条搭配</h3>
+                                <p class="card-desc">选择带有“幸运”或“暴击”词条的装备，从硬件上增加大成功发生的频率。</p>
+                                <a href="#" class="card-link">查看详情 &rarr;</a>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Character Guide -->
+                <section id="characters">
+                    <div class="section-header">
+                        <h2 class="section-title">角色推荐指南</h2>
+                    </div>
+                    <div class="guide-grid">
+                        <article class="card">
+                            <div class="card-body">
+                                <h3 class="card-title">勇者</h3>
+                                <p class="card-desc">基础面板优秀，适合作为主战力。利用其高攻击力快速清场，为大成功创造机会。</p>
+                            </div>
+                        </article>
+                        <article class="card">
+                            <div class="card-body">
+                                <h3 class="card-title">贤者</h3>
+                                <p class="card-desc">提供强大的辅助与治疗，确保队伍存活，是持续刷图的关键。</p>
+                            </div>
+                        </article>
+                        <article class="card">
+                            <div class="card-body">
+                                <h3 class="card-title">盗贼</h3>
+                                <p class="card-desc">擅长搜刮和开锁，其特有技能“搜刮大成功”能直接获得稀有道具。</p>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">新手入门流程</h3>
+                    <ul class="strategy-list">
+                        <li>
+                            <h4>第1-3天</h4>
+                            <p>建立村庄，招募初始村民，优先建造食堂和兵营。</p>
+                        </li>
+                        <li>
+                            <h4>第4-7天</h4>
+                            <p>派遣冒险者探索低级迷宫，积累金币和经验。</p>
+                        </li>
+                        <li>
+                            <h4>第8天+</h4>
+                            <p>解锁“大成功”相关建筑，优化技能分配。</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h3 class="widget-title">资源优先级</h3>
+                    <ul class="strategy-list">
+                        <li>
+                            <h4>金币</h4>
+                            <p>用于建造设施和招募，初期需大量囤积。</p>
+                        </li>
+                        <li>
+                            <h4>木材/石材</h4>
+                            <p>用于建筑升级，建议保持库存充足。</p>
+                        </li>
+                        <li>
+                            <h4>稀有矿石</h4>
+                            <p>用于打造高阶装备，大成功时产出较多。</p>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="container">
+            <div class="section-header">
+                <h2 class="section-title">常见问题解答</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">如何提高迷宫探索的“大成功”概率？</div>
+                    <div class="faq-answer">
+                        提高大成功概率主要依赖于角色的技能熟练度、幸运属性以及装备词条。在技能达到Lv.5后，每次判定都有更高的几率触发大成功。此外，携带增加幸运的食物也能有效提升成功率。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">大成功会带来什么额外奖励？</div>
+                    <div class="faq-answer">
+                        大成功通常意味着获得比正常判定更多的经验值、金币，以及更高的概率获得稀有道具或装备。在战斗中，大成功往往能直接秒杀敌人或造成暴击伤害。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">新手开局应该优先发展什么？</div>
+                    <div class="faq-answer">
+                        新手阶段应优先保证村民的饱腹感和基本生存需求（食堂和宿舍）。随后尽快解锁兵营，开始派遣第一批冒险者进行低级迷宫探索，以获取启动资金。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">如果判定失败会怎么样？</div>
+                    <div class="faq-answer">
+                        判定失败通常不会导致角色死亡，但会扣除一定的疲劳度或造成轻微伤害。如果疲劳度过高，角色的效率会大幅下降，因此合理安排休息和恢复非常重要。
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>关于本站</h4>
+                    <p style="color: #bdc3c7; font-size: 0.9rem;">
+                        本站为《冒险迷宫村》玩家提供最全面的大成功攻略与策略分享，致力于帮助玩家打造最强村庄。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#">新手教程</a></li>
+                        <li><a href="#">技能树详解</a></li>
+                        <li><a href="#">迷宫图鉴</a></li>
+                        <li><a href="#">社区讨论</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>相关资源</h4>
+                    <ul>
+                        <li><a href="#">游戏下载</a></li>
+                        <li><a href="#">更新日志</a></li>
+                        <li><a href="#">常见错误修复</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 冒险迷宫村攻略指南. All Rights Reserved. 本站内容仅供学习交流使用.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+  </html>
