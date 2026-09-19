@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="阳高二中贴吧 - 阳高二中校园生活、学习资料、校园活动及师生交流社区。提供最新校内动态、考试信息分享及校友互动平台。">
+    <meta name="keywords" content="阳高二中贴吧, 阳高二中, 高中贴吧, 阳高二中论坛, 校园生活">
+    <title>阳高二中贴吧 - 校园生活与师生交流社区</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #d32f2f; /* 校园红 */
+            --primary-hover: #b71c1c;
+            --bg-color: #f5f7fa;
+            --card-bg: #ffffff;
+            --text-main: #2c3e50;
+            --text-secondary: #607d8b;
+            --border-color: #e0e0e0;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* 头部导航 */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            font-size: 15px;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .btn-login {
+            padding: 6px 16px;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .btn-login:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* 首屏 Hero */
+        .hero {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 12px;
+            color: #b71c1c;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 搜索框 */
+        .search-bar {
+            margin-top: 24px;
+            position: relative;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 24px;
+            font-size: 15px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 4px;
+            top: 4px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 主要内容区 Grid */
+        .main-content {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        /* 主题列表 */
+        .topic-list {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .topic-item {
+            display: flex;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.2s;
+        }
+
+        .topic-item:last-child {
+            border-bottom: none;
+        }
+
+        .topic-item:hover {
+            background-color: #fafafa;
+        }
+
+        .topic-stats {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 60px;
+            margin-right: 20px;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .stat-num {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .topic-info {
+            flex: 1;
+        }
+
+        .topic-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .topic-title a:hover {
+            color: var(--primary-color);
+        }
+
+        .topic-meta {
+            font-size: 13px;
+            color: var(--text-secondary);
+            display: flex;
+            gap: 16px;
+        }
+
+        .tag {
+            background-color: #e3f2fd;
+            color: #1976d2;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+
+        .tag.hot {
+            background-color: #ffebee;
+            color: #d32f2f;
+        }
+
+        /* 侧边栏 */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .sidebar-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .sidebar-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sidebar-title a {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .quick-links li {
+            margin-bottom: 12px;
+        }
+
+        .quick-links a {
+            font-size: 14px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+        }
+
+        .quick-links a::before {
+            content: "•";
+            color: var(--primary-color);
+            margin-right: 8px;
+            font-weight: bold;
+        }
+
+        .notice-list li {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            padding-left: 10px;
+            border-left: 2px solid #eee;
+        }
+
+        .notice-list li:hover {
+            border-left-color: var(--primary-color);
+            color: var(--text-main);
+        }
+
+        /* 分类网格 */
+        .category-section {
+            margin-top: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .category-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-color: #ffebee;
+        }
+
+        .cat-icon {
+            width: 48px;
+            height: 48px;
+            background-color: #ffebee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            color: var(--primary-color);
+            font-size: 20px;
+        }
+
+        .cat-name {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .cat-count {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* 底部 */
+        footer {
+            background-color: #263238;
+            color: #b0bec5;
+            padding: 40px 0 20px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .footer-col h3 {
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col a:hover {
+            color: #fff;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #37474f;
+            font-size: 13px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            .topic-item {
+                flex-direction: column;
+            }
+            .topic-stats {
+                flex-direction: row;
+                margin-bottom: 12px;
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                阳高二中贴吧
+            </a>
+            <nav class="nav-links">
+                <a href="#" class="active">首页</a>
+                <a href="#">校园生活</a>
+                <a href="#">学习交流</a>
+                <a href="#">校友之家</a>
+                <a href="#">表白墙</a>
+            </nav>
+            <a href="#" class="btn-login">登录 / 注册</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>阳高二中贴吧 - 记录我们的青春</h1>
+            <p>这里是阳高二中师生、校友及关注者的在线社区。分享校园趣事、交流学习心得、发布失物招领及表白信息。</p>
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="搜索帖子、话题或同学...">
+                <button class="search-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="main-content">
+            <!-- 帖子列表 -->
+            <section class="topic-list">
+                <article class="topic-item">
+                    <div class="topic-stats">
+                        <span class="stat-num">1.2k</span>
+                        <span>热度</span>
+                    </div>
+                    <div class="topic-info">
+                        <h3 class="topic-title"><a href="#">【吐槽】听说高三（1）班的物理老师今天又拖堂了？</a></h3>
+                        <div class="topic-meta">
+                            <span class="tag hot">热帖</span>
+                            <span>2023-10-24 14:30</span>
+                            <span>回复 342</span>
+                            <span>来自：高三（1）班</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="topic-item">
+                    <div class="topic-stats">
+                        <span class="stat-num">856</span>
+                        <span>热度</span>
+                    </div>
+                    <div class="topic-info">
+                        <h3 class="topic-title"><a href="#">【寻人】食堂二楼那个穿白色卫衣的男生是谁？想认识一下。</a></h3>
+                        <div class="topic-meta">
+                            <span class="tag">表白</span>
+                            <span>2023-10-24 12:15</span>
+                            <span>回复 89</span>
+                            <span>来自：校园生活</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="topic-item">
+                    <div class="topic-stats">
+                        <span class="stat-num">620</span>
+                        <span>热度</span>
+                    </div>
+                    <div class="topic-info">
+                        <h3 class="topic-title"><a href="#">【分享】高二下学期数学复习资料整理（含错题本模板）</a></h3>
+                        <div class="topic-meta">
+                            <span class="tag">学习</span>
+                            <span>2023-10-23 21:00</span>
+                            <span>回复 156</span>
+                            <span>来自：学习交流</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="topic-item">
+                    <div class="topic-stats">
+                        <span class="stat-num">430</span>
+                        <span>热度</span>
+                    </div>
+                    <div class="topic-info">
+                        <h3 class="topic-title"><a href="#">【公告】关于近期校园网网络维护的通知</a></h3>
+                        <div class="topic-meta">
+                            <span class="tag">公告</span>
+                            <span>2023-10-23 09:30</span>
+                            <span>回复 12</span>
+                            <span>来自：校园管理</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="topic-item">
+                    <div class="topic-stats">
+                        <span class="stat-num">315</span>
+                        <span>热度</span>
+                    </div>
+                    <div class="topic-info">
+                        <h3 class="topic-title"><a href="#">【活动】第一届校园歌手大赛决赛将于周五晚在礼堂举行</a></h3>
+                        <div class="topic-meta">
+                            <span class="tag">活动</span>
+                            <span>2023-10-22 16:45</span>
+                            <span>回复 201</span>
+                            <span>来自：学生会</span>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 侧边栏 -->
+            <aside>
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">快速导航 <a href="#">更多 &gt;</a></h3>
+                    <ul class="quick-links">
+                        <li><a href="#">高二年级</a></li>
+                        <li><a href="#">高三年级</a></li>
+                        <li><a href="#">高一新生</a></li>
+                        <li><a href="#">校务公告</a></li>
+                        <li><a href="#">失物招领</a></li>
+                        <li><a href="#">二手交易</a></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">最新公告</h3>
+                    <ul class="notice-list">
+                        <li>关于国庆假期返校时间调整的通知</li>
+                        <li>2023-2024学年度校历发布</li>
+                        <li>图书馆开放时间变更公告</li>
+                        <li>冬季运动会报名须知</li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">活跃用户</h3>
+                    <ul class="quick-links">
+                        <li><a href="#">匿名用户123</a></li>
+                        <li><a href="#">学霸养成中</a></li>
+                        <li><a href="#">爱吃食堂的猪</a></li>
+                        <li><a href="#">老学长归来</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+
+        <!-- 分类板块 -->
+        <section class="category-section">
+            <div class="section-header">
+                <h2>热门板块</h2>
+            </div>
+            <div class="grid-container">
+                <div class="category-card">
+                    <div class="cat-icon">🏫</div>
+                    <div class="cat-name">校园生活</div>
+                    <div class="cat-count">12.5万 帖子</div>
+                </div>
+                <div class="category-card">
+                    <div class="cat-icon">📚</div>
+                    <div class="cat-name">学习交流</div>
+                    <div class="cat-count">8.2万 帖子</div>
+                </div>
+                <div class="category-card">
+                    <div class="cat-icon">⚽</div>
+                    <div class="cat-name">体育竞技</div>
+                    <div class="cat-count">3.1万 帖子</div>
+                </div>
+                <div class="category-card">
+                    <div class="cat-icon">🎵</div>
+                    <div class="cat-name">文艺社团</div>
+                    <div class="cat-count">1.8万 帖子</div>
+                </div>
+                <div class="category-card">
+                    <div class="cat-icon">💼</div>
+                    <div class="cat-name">就业升学</div>
+                    <div class="cat-count">5.6万 帖子</div>
+                </div>
+                <div class="category-card">
+                    <div class="cat-icon">❤️</div>
+                    <div class="cat-name">表白墙</div>
+                    <div class="cat-count">9.9万 帖子</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>关于我们</h3>
+                    <ul>
+                        <li><a href="#">贴吧简介</a></li>
+                        <li><a href="#">版主团队</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>帮助中心</h3>
+                    <ul>
+                        <li><a href="#">发帖指南</a></li>
+                        <li><a href="#">版规说明</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>友情链接</h3>
+                    <ul>
+                        <li><a href="#">阳高县人民政府</a></li>
+                        <li><a href="#">阳高一中</a></li>
+                        <li><a href="#">大同教育网</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 阳高二中贴吧校园社区 版权所有. 本站仅用于展示校园社区首页设计，不提供实际发帖功能。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
