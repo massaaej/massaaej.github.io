@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FULAO2在线官网观看-热门网络文学与原创社区平台</title>
+    <meta name="description" content="FULAO2在线官网观看平台，提供海量原创网络文学、情感故事及社区互动内容。包含热门小说推荐、最新章节更新、作者专区及读者社区服务。">
+    <meta name="keywords" content="FULAO2, FULAO2在线观看, 网络文学, 原创社区, 情感小说, 小说阅读">
+    <style>
+        :root {
+            --primary-color: #ff5252;
+            --primary-hover: #ff1744;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --text-light: #999999;
+            --border-color: #e0e0e0;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            font-size: 16px;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #ff5252 0%, #ff1744 100%);
+            padding: 48px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 24px;
+        }
+
+        .search-bar {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 12px 16px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .search-bar button {
+            padding: 12px 24px;
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Main Layout */
+        .main-container {
+            max-width: var(--container-width);
+            margin: 32px auto;
+            padding: 0 var(--spacing-unit);
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 32px;
+            flex: 1;
+        }
+
+        /* Section Styles */
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .section-title a {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Book Cards Grid */
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .book-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .book-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-color: rgba(255, 82, 82, 0.3);
+        }
+
+        .book-cover {
+            width: 100%;
+            height: 240px;
+            background-color: #eee;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .book-info {
+            padding: 12px;
+        }
+
+        .book-title {
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .book-meta {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .book-tags {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 11px;
+            padding: 2px 6px;
+            background-color: #f0f0f0;
+            color: var(--text-secondary);
+            border-radius: 2px;
+        }
+
+        .tag.hot {
+            background-color: #ffebee;
+            color: var(--primary-color);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .rank-list {
+            background: var(--card-bg);
+            padding: 16px;
+            border-radius: 8px;
+        }
+
+        .rank-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .rank-item:last-child {
+            border-bottom: none;
+        }
+
+        .rank-num {
+            width: 24px;
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--text-light);
+            margin-right: 8px;
+        }
+
+        .rank-item:nth-child(1) .rank-num { color: #ff9800; }
+        .rank-item:nth-child(2) .rank-num { color: #ff5722; }
+        .rank-item:nth-child(3) .rank-num { color: #f44336; }
+
+        .rank-info {
+            flex: 1;
+        }
+
+        .rank-title {
+            font-size: 14px;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .rank-update {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        /* Categories */
+        .category-nav {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .category-list li {
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .category-list li:last-child {
+            border-bottom: none;
+        }
+
+        .category-list a {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+
+        .category-list a:hover {
+            color: var(--primary-color);
+        }
+
+        .category-count {
+            font-size: 12px;
+            color: var(--text-light);
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #fff;
+            border-top: 1px solid var(--border-color);
+            margin-top: auto;
+            padding: 40px 0;
+        }
+
+        .footer-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .footer-links {
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            margin: 0 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 12px;
+            }
+            
+            .nav-links {
+                display: none; /* In a real app, implement a hamburger menu */
+            }
+
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="#" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+            <span>FULAO2</span>
+        </a>
+        <nav class="nav-links">
+            <a href="#" class="active">首页</a>
+            <a href="#">全本小说</a>
+            <a href="#">连载更新</a>
+            <a href="#">原创专区</a>
+            <a href="#">榜单排行</a>
+        </nav>
+        <div class="header-actions">
+            <button class="btn btn-outline">登录</button>
+            <button class="btn btn-primary">注册</button>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <h1>发现精彩，畅读无限</h1>
+    <p>海量原创网络文学作品，涵盖都市情感、玄幻武侠、悬疑推理等多个领域。在这里，每一个故事都有独特的温度。</p>
+    <div class="search-bar">
+        <input type="text" placeholder="搜索小说、作者或书名...">
+        <button>搜索</button>
+    </div>
+</section>
+
+<main class="main-container">
+    <!-- Left Content -->
+    <div class="content-area">
+        <!-- Featured Section -->
+        <section class="section">
+            <div class="section-title">
+                <h2>今日推荐</h2>
+                <a href="#">查看更多 &rarr;</a>
+            </div>
+            <div class="book-grid">
+                <article class="book-card">
+                    <div class="book-cover">
+                        <img src="https://picsum.photos/seed/novel1/300/400" alt="小说封面">
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">都市之最强狂兵</h3>
+                        <div class="book-meta">作者：龙傲天</div>
+                        <div class="book-tags">
+                            <span class="tag hot">热门</span>
+                            <span class="tag">都市</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="book-card">
+                    <div class="book-cover">
+                        <img src="https://picsum.photos/seed/novel2/300/400" alt="小说封面">
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">绝世医仙</h3>
+                        <div class="book-meta">作者：林逸</div>
+                        <div class="book-tags">
+                            <span class="tag">玄幻</span>
+                            <span class="tag">修真</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="book-card">
+                    <div class="book-cover">
+                        <img src="https://picsum.photos/seed/novel3/300/400" alt="小说封面">
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">豪门弃妇的逆袭</h3>
+                        <div class="book-meta">作者：苏小小</div>
+                        <div class="book-tags">
+                            <span class="tag">情感</span>
+                            <span class="tag">励志</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="book-card">
+                    <div class="book-cover">
+                        <img src="https://picsum.photos/seed/novel4/300/400" alt="小说封面">
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">末世之进化之路</h3>
+                        <div class="book-meta">作者：末日行者</div>
+                        <div class="book-tags">
+                            <span class="tag">科幻</span>
+                            <span class="tag">末世</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="book-card">
+                    <div class="book-cover">
+                        <img src="https://picsum.photos/seed/novel5/300/400" alt="小说封面">
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">回到过去当神医</h3>
+                        <div class="book-meta">作者：时空旅人</div>
+                        <div class="book-tags">
+                            <span class="tag">历史</span>
+                            <span class="tag">穿越</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="book-card">
+                    <div class="book-cover">
+                        <img src="https://picsum.photos/seed/novel6/300/400" alt="小说封面">
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">鬼吹灯之精绝古城</h3>
+                        <div class="book-meta">作者：天下霸唱</div>
+                        <div class="book-tags">
+                            <span class="tag">悬疑</span>
+                            <span class="tag">探险</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- New Updates Section -->
+        <section class="section" style="margin-top: 32px;">
+            <div class="section-title">
+                <h2>最新更新</h2>
+                <a href="#">查看更多 &rarr;</a>
+            </div>
+            <div class="book-grid">
+                <article class="book-card">
+                    <div class="book-cover">
+                        <img src="https://picsum.photos/seed/novel7/300/400" alt="小说封面">
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">星辰变后传</h3>
+                        <div class="book-meta">作者：我吃西红柿</div>
+                        <div class="book-tags">
+                            <span class="tag">连载中</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="book-card">
+                    <div class="book-cover">
+                        <img src="https://picsum.photos/seed/novel8/300/400" alt="小说封面">
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">霸道总裁爱上我</h3>
+                        <div class="book-meta">作者：顾漫风格</div>
+                        <div class="book-tags">
+                            <span class="tag">言情</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="book-card">
+                    <div class="book-cover">
+                        <img src="https://picsum.photos/seed/novel9/300/400" alt="小说封面">
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">黑客之王</h3>
+                        <div class="book-meta">作者：代码人生</div>
+                        <div class="book-tags">
+                            <span class="tag">科技</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <!-- Ranking -->
+        <div class="rank-list">
+            <div class="section-title" style="border:none; margin-bottom:8px;">
+                <h3>24小时热榜</h3>
+            </div>
+            <ul class="rank-list-content">
+                <li class="rank-item">
+                    <span class="rank-num">1</span>
+                    <div class="rank-info">
+                        <a href="#" class="rank-title">赘婿逆袭记</a>
+                        <span class="rank-update">10万+ 热度</span>
+                    </div>
+                </li>
+                <li class="rank-item">
+                    <span class="rank-num">2</span>
+                    <div class="rank-info">
+                        <a href="#" class="rank-title">我的绝色总裁老婆</a>
+                        <span class="rank-update">9.8万+ 热度</span>
+                    </div>
+                </li>
+                <li class="rank-item">
+                    <span class="rank-num">3</span>
+                    <div class="rank-info">
+                        <a href="#" class="rank-title">超级神医</a>
+                        <span class="rank-update">8.5万+ 热度</span>
+                    </div>
+                </li>
+                <li class="rank-item">
+                    <span class="rank-num">4</span>
+                    <div class="rank-info">
+                        <a href="#" class="rank-title">逆天邪神</a>
+                        <span class="rank-update">7.2万+ 热度</span>
+                    </div>
+                </li>
+                <li class="rank-item">
+                    <span class="rank-num">5</span>
+                    <div class="rank-info">
+                        <a href="#" class="rank-title">修罗武神</a>
+                        <span class="rank-update">6.9万+ 热度</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Categories -->
+        <div class="category-nav">
+            <div class="section-title" style="border:none; margin-bottom:12px;">
+                <h3>小说分类</h3>
+            </div>
+            <ul class="category-list">
+                <li><a href="#"><span>都市言情</span><span class="category-count">12k+</span></a></li>
+                <li><a href="#"><span>玄幻修真</span><span class="category-count">8k+</span></a></li>
+                <li><a href="#"><span>历史军事</span><span class="category-count">5k+</span></a></li>
+                <li><a href="#"><span>科幻末世</span><span class="category-count">3k+</span></a></li>
+                <li><a href="#"><span>悬疑推理</span><span class="category-count">4k+</span></a></li>
+                <li><a href="#"><span>灵异恐怖</span><span class="category-count">2k+</span></a></li>
+                <li><a href="#"><span>游戏竞技</span><span class="category-count">6k+</span></a></li>
+                <li><a href="#"><span>同人衍生</span><span class="category-count">1k+</span></a></li>
+            </ul>
+        </div>
+
+        <!-- Ad Space Placeholder -->
+        <div style="background:#e0e0e0; height:250px; display:flex; align-items:center; justify-content:center; color:#666; border-radius:8px;">
+            广告位预留
+        </div>
+    </aside>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-links">
+            <a href="#">关于我们</a>
+            <a href="#">联系客服</a>
+            <a href="#">用户协议</a>
+            <a href="#">隐私政策</a>
+            <a href="#">版权声明</a>
+        </div>
+        <p>&copy; 2023 FULAO2在线观看平台. All Rights Reserved.</p>
+        <p style="margin-top:8px; font-size:12px; color:#999;">本站内容均来自互联网，仅供学习交流使用，请于下载后24小时内删除。</p>
+    </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+  </html>
